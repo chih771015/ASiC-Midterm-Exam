@@ -14,6 +14,8 @@ class MediaExamViewController: UIViewController {
     enum ButtonImage: String {
         case play = "play_button"
         case pause = "stop"
+        case mute = "volume_off"
+        case muteNo = "volume_up"
     }
     
     
@@ -76,11 +78,28 @@ class MediaExamViewController: UIViewController {
     }
     @IBAction func forwardAction() {
         
+        guard let player = self.player else {
+            return
+        }
+        let currentTime = CMTimeGetSeconds(player.currentTime())
+        // let seconds = Int64(timeSlider.value)
+        let addTime = currentTime + 10
+        let targetTime:CMTime = CMTimeMake(value: Int64(addTime), timescale: 1)
+        // 將當前設置時間設為播放時間
+        player.seek(to: targetTime)
     }
     @IBOutlet weak var forwardButton: UIButton!
     
     @IBAction func backAction() {
-        
+        guard let player = self.player else {
+            return
+        }
+        let currentTime = CMTimeGetSeconds(player.currentTime())
+       // let seconds = Int64(timeSlider.value)
+        let addTime = currentTime - 10
+        let targetTime:CMTime = CMTimeMake(value: Int64(addTime), timescale: 1)
+        // 將當前設置時間設為播放時間
+        player.seek(to: targetTime)
     }
     
     @IBOutlet weak var backButton: UIButton!
@@ -93,11 +112,34 @@ class MediaExamViewController: UIViewController {
     
     @IBOutlet weak var muteButton: UIButton!
     @IBAction func muteAction() {
+        guard let player = self.player else {
+            return
+        }
+        
+        
+        if player.isMuted {
+            muteButton.setImage(UIImage(named: ButtonImage.muteNo.rawValue), for: .normal)
+            player.isMuted = !player.isMuted
+           
+        } else {
+            muteButton.setImage(UIImage(named: ButtonImage.mute.rawValue), for: .normal)
+            player.isMuted = !player.isMuted
+        }
         
     }
     @IBOutlet weak var videoSubView: UIView!
     
     @IBOutlet weak var timeSlider: UISlider!
+    
+    @IBAction func changeTime(_ sender: Any) {
+        
+        let seconds = Int64(timeSlider.value)
+        let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+        // 將當前設置時間設為播放時間
+        player?.seek(to: targetTime)
+    }
+    
+    
     
     @IBOutlet weak var nowTimeLabel: UILabel!
     
@@ -114,6 +156,7 @@ class MediaExamViewController: UIViewController {
     var player:AVPlayer? = AVPlayer()
     var playerLayer:AVPlayerLayer? = AVPlayerLayer()
     var videoPlay = false
+    var audioMute = false
     
     
     
@@ -128,6 +171,8 @@ class MediaExamViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         //self.navigationController?.navigationBar.tintColor = .white
         // Do any additional setup after loading the view, typically from a nib.
+        
+        timeSlider.value = 0
        
     }
     
@@ -138,6 +183,7 @@ class MediaExamViewController: UIViewController {
     
     
     func formatConversion(time:Float64) -> String {
+        
         let songLength = Int(time)
         let minutes = Int(songLength / 60) // 求 songLength 的商，為分鐘數
         let seconds = Int(songLength % 60) // 求 songLength 的餘數，為秒數

@@ -10,10 +10,76 @@ import UIKit
 import AVKit
 
 class MediaExamViewController: UIViewController {
-
+    
+    enum ButtonImage: String {
+        case play = "play_button"
+        case pause = "stop"
+    }
+    
+    
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var seachButton: UIButton!
+    @IBAction func seachAction() {
+        
+        
+        self.playerLayer?.removeFromSuperlayer()
+        self.playerLayer = nil
+        self.player = nil
+        videoPlay = false
+        playButton.setImage(UIImage(named:String(ButtonImage.play.rawValue)), for: .normal)
+        guard let title = textField.text else {return}
+        guard let url = URL(string: title) else {return}
+        let playerItem = AVPlayer(url: url)
+        self.player = playerItem
+        let playerLayer = AVPlayerLayer(player: playerItem)
+        playerLayer.frame = view.bounds
+        self.playerLayer = playerLayer
+        videoSubView.layer.addSublayer(playerLayer)
+    }
+    @IBOutlet weak var playButton: UIButton!
+    @IBAction func playAction() {
+        
+        if  videoPlay {
+            
+            player?.pause()
+            videoPlay = !videoPlay
+            playButton.setImage(UIImage(named:String(ButtonImage.play.rawValue)), for: .normal)
+        } else {
+            
+            player?.play()
+            videoPlay = !videoPlay
+            playButton.setImage(UIImage(named:String(ButtonImage.pause.rawValue)), for: .normal)
+        }
+        
+    }
+    @IBAction func forwardAction() {
+        
+    }
+    @IBOutlet weak var forwardButton: UIButton!
+    
+    @IBAction func backAction() {
+        
+    }
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    
+    @IBOutlet weak var fullSizeButton: UIButton!
+    @IBAction func fullSize(_ sender: Any) {
+    }
+    
+    
+    @IBOutlet weak var muteButton: UIButton!
+    @IBAction func muteAction() {
+        
+    }
+    @IBOutlet weak var videoSubView: UIView!
     @IBOutlet weak var navigationBarVideo: UINavigationItem!
-    var player = AVPlayer()
-    var playerLayer = AVPlayerLayer()
+    var player:AVPlayer? = AVPlayer()
+    var playerLayer:AVPlayerLayer? = AVPlayerLayer()
+    var videoPlay = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,13 +92,16 @@ class MediaExamViewController: UIViewController {
         
         player = AVPlayer(url: URL(string: "https://s3-ap-northeast-1.amazonaws.com/mid-exam/Video/taeyeon.mp4")!) // your video url
         playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = view.bounds
-        view.layer.addSublayer(playerLayer)
-        player.play()
+        playerLayer?.frame = view.bounds
+        
+        videoSubView.layer.addSublayer(playerLayer!)
+       
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         
+        
     }
+    
 }
 

@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJj-BV-hqr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入欲播放影片網址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-Ku-MfX">
                                 <rect key="frame" x="10" y="79" width="265" height="30"/>
                                 <nil key="textColor"/>
@@ -43,6 +47,9 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="seachAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0H-sb-JDv"/>
+                                </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-iM-7zu">
                                 <rect key="frame" x="60" y="553" width="255" height="31"/>
@@ -66,6 +73,9 @@
                                     <constraint firstAttribute="width" constant="24" id="tHP-m6-QGw"/>
                                 </constraints>
                                 <state key="normal" image="play_button"/>
+                                <connections>
+                                    <action selector="playAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="eQY-mC-tcP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C13-5B-BVc">
                                 <rect key="frame" x="239.5" y="613" width="24" height="24"/>
@@ -74,6 +84,9 @@
                                     <constraint firstAttribute="height" constant="24" id="tth-da-ajA"/>
                                 </constraints>
                                 <state key="normal" image="fast_forward"/>
+                                <connections>
+                                    <action selector="forwardAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueH-dM-V1S"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJF-E0-dTg">
                                 <rect key="frame" x="47.5" y="613" width="24" height="24"/>
@@ -82,6 +95,9 @@
                                     <constraint firstAttribute="width" constant="24" id="lMN-Rm-Yzh"/>
                                 </constraints>
                                 <state key="normal" image="volume_up"/>
+                                <connections>
+                                    <action selector="muteAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYK-2j-jW7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bye-Se-cwW">
                                 <rect key="frame" x="303.5" y="613" width="24" height="24"/>
@@ -90,6 +106,9 @@
                                     <constraint firstAttribute="width" constant="24" id="e8h-rU-9P4"/>
                                 </constraints>
                                 <state key="normal" image="full_screen_button"/>
+                                <connections>
+                                    <action selector="fullSize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DYU-0K-vO3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFh-Z3-G9n">
                                 <rect key="frame" x="111.5" y="613" width="24" height="24"/>
@@ -98,6 +117,9 @@
                                     <constraint firstAttribute="width" constant="24" id="R8F-aW-2cN"/>
                                 </constraints>
                                 <state key="normal" image="rewind"/>
+                                <connections>
+                                    <action selector="backAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rqm-Gu-3qd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,6 +127,7 @@
                             <constraint firstItem="oWu-0b-59q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1u0-f4-I8L"/>
                             <constraint firstItem="DFh-Z3-G9n" firstAttribute="leading" secondItem="zJF-E0-dTg" secondAttribute="trailing" constant="40" id="32Z-RD-HGP"/>
                             <constraint firstItem="bye-Se-cwW" firstAttribute="centerY" secondItem="C13-5B-BVc" secondAttribute="centerY" id="7Bv-aX-K6n"/>
+                            <constraint firstItem="nJj-BV-hqr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ADd-Fq-VNS"/>
                             <constraint firstItem="s6M-IU-Zy2" firstAttribute="centerY" secondItem="qWP-iM-7zu" secondAttribute="centerY" id="B59-DJ-cEp"/>
                             <constraint firstItem="7Zf-Ku-MfX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="D8d-Ko-rBb"/>
                             <constraint firstItem="qWP-iM-7zu" firstAttribute="leading" secondItem="s6M-IU-Zy2" secondAttribute="trailing" constant="10" id="EqZ-gZ-Tq5"/>
@@ -119,17 +142,28 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YKS-eu-87j" secondAttribute="trailing" constant="10" id="bQb-us-vyD"/>
                             <constraint firstItem="oWu-0b-59q" firstAttribute="leading" secondItem="DFh-Z3-G9n" secondAttribute="trailing" constant="40" id="bdt-8O-vKd"/>
                             <constraint firstItem="YKS-eu-87j" firstAttribute="centerY" secondItem="qWP-iM-7zu" secondAttribute="centerY" id="cb4-m0-Pp2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nJj-BV-hqr" secondAttribute="bottom" id="fcd-ri-RpT"/>
+                            <constraint firstItem="nJj-BV-hqr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m6N-Wg-CAc"/>
                             <constraint firstItem="s6M-IU-Zy2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="qnX-Sx-bFC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZVG-pS-ydL" secondAttribute="trailing" constant="10" id="ruG-OK-cXD"/>
                             <constraint firstItem="oWu-0b-59q" firstAttribute="top" secondItem="qWP-iM-7zu" secondAttribute="bottom" constant="30" id="w1D-kb-ye8"/>
                             <constraint firstItem="C13-5B-BVc" firstAttribute="centerY" secondItem="oWu-0b-59q" secondAttribute="centerY" id="x7W-xC-Lb9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nJj-BV-hqr" secondAttribute="trailing" id="yNS-W8-jNI"/>
                             <constraint firstItem="DFh-Z3-G9n" firstAttribute="centerY" secondItem="oWu-0b-59q" secondAttribute="centerY" id="ymU-ud-XpB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Video Player" id="Iii-t2-iY2"/>
                     <connections>
+                        <outlet property="backButton" destination="DFh-Z3-G9n" id="Rzb-su-udK"/>
+                        <outlet property="forwardButton" destination="C13-5B-BVc" id="oLj-1v-Dyk"/>
+                        <outlet property="fullSizeButton" destination="bye-Se-cwW" id="KsK-ia-XXp"/>
+                        <outlet property="muteButton" destination="zJF-E0-dTg" id="a3z-CK-3sm"/>
                         <outlet property="navigationBarVideo" destination="Iii-t2-iY2" id="tW9-Pu-iv7"/>
+                        <outlet property="playButton" destination="oWu-0b-59q" id="7lz-uo-L0t"/>
+                        <outlet property="seachButton" destination="ZVG-pS-ydL" id="vXZ-wA-Hrr"/>
+                        <outlet property="textField" destination="7Zf-Ku-MfX" id="o8p-gI-crd"/>
+                        <outlet property="videoSubView" destination="nJj-BV-hqr" id="zoZ-5o-Qbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

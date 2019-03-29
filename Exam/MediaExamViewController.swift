@@ -29,12 +29,34 @@ class MediaExamViewController: UIViewController {
         playButton.setImage(UIImage(named:String(ButtonImage.play.rawValue)), for: .normal)
         guard let title = textField.text else {return}
         guard let url = URL(string: title) else {return}
-        let playerItem = AVPlayer(url: url)
-        self.player = playerItem
-        let playerLayer = AVPlayerLayer(player: playerItem)
+        
+        let playerItem = AVPlayerItem(url: url)
+        let player = AVPlayer(playerItem: playerItem)
+        self.player = player
+        let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = view.bounds
         self.playerLayer = playerLayer
         videoSubView.layer.addSublayer(playerLayer)
+        
+        // 抓取 playItem 的 duration
+        let duration = playerItem.asset.duration
+        // 把 duration 轉為我們歌曲的總時間（秒數）。
+        let seconds = CMTimeGetSeconds(duration)
+        // 把我們的歌曲總時長顯示到我們的 Label 上。
+        endTimeLabel.text = formatConversion(time: seconds)
+        timeSlider.minimumValue = 0
+        // 更新 Slider 的 maximumValue。
+        timeSlider.maximumValue = Float(seconds)
+        // 這裡看個人需求，如果想要拖動後才更新進度，那就設為 false；如果想要直接更新就設為 true，預設為 true。
+        timeSlider.isContinuous = true
+        player.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: DispatchQueue.main, using: { [weak self] (CMTime) in
+            if self?.player?.currentItem?.status == .readyToPlay {
+                let currentTime = CMTimeGetSeconds(self!.player!.currentTime())
+                self?.timeSlider.value = Float(currentTime)
+                self?.nowTimeLabel.text = self?.formatConversion(time: currentTime)
+            }
+        })
+       
     }
     @IBOutlet weak var playButton: UIButton!
     @IBAction func playAction() {
@@ -74,10 +96,27 @@ class MediaExamViewController: UIViewController {
         
     }
     @IBOutlet weak var videoSubView: UIView!
+    
+    @IBOutlet weak var timeSlider: UISlider!
+    
+    @IBOutlet weak var nowTimeLabel: UILabel!
+    
+    @IBOutlet weak var endTimeLabel: UILabel!
+    
+    
+    
+    
     @IBOutlet weak var navigationBarVideo: UINavigationItem!
+    
+    
+    
+    
     var player:AVPlayer? = AVPlayer()
     var playerLayer:AVPlayerLayer? = AVPlayerLayer()
     var videoPlay = false
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -89,12 +128,6 @@ class MediaExamViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         //self.navigationController?.navigationBar.tintColor = .white
         // Do any additional setup after loading the view, typically from a nib.
-        
-        player = AVPlayer(url: URL(string: "https://s3-ap-northeast-1.amazonaws.com/mid-exam/Video/taeyeon.mp4")!) // your video url
-        playerLayer = AVPlayerLayer(player: player)
-        playerLayer?.frame = view.bounds
-        
-        videoSubView.layer.addSublayer(playerLayer!)
        
     }
     
@@ -103,5 +136,23 @@ class MediaExamViewController: UIViewController {
         
     }
     
+    
+    func formatConversion(time:Float64) -> String {
+        let songLength = Int(time)
+        let minutes = Int(songLength / 60) // 求 songLength 的商，為分鐘數
+        let seconds = Int(songLength % 60) // 求 songLength 的餘數，為秒數
+        var time = ""
+        if minutes < 10 {
+            time = "0\(minutes):"
+        } else {
+            time = "\(minutes)"
+        }
+        if seconds < 10 {
+            time += "0\(seconds)"
+        } else {
+            time += "\(seconds)"
+        }
+        return time
+    }
 }
 

@@ -52,16 +52,16 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-iM-7zu">
-                                <rect key="frame" x="60" y="553" width="255" height="31"/>
+                                <rect key="frame" x="64" y="553" width="247" height="31"/>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6M-IU-Zy2">
-                                <rect key="frame" x="10" y="557.5" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6M-IU-Zy2">
+                                <rect key="frame" x="10" y="557.5" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKS-eu-87j">
-                                <rect key="frame" x="323" y="557.5" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKS-eu-87j">
+                                <rect key="frame" x="319" y="557.5" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -156,13 +156,16 @@
                     <navigationItem key="navigationItem" title="Video Player" id="Iii-t2-iY2"/>
                     <connections>
                         <outlet property="backButton" destination="DFh-Z3-G9n" id="Rzb-su-udK"/>
+                        <outlet property="endTimeLabel" destination="YKS-eu-87j" id="k9v-Rj-bhA"/>
                         <outlet property="forwardButton" destination="C13-5B-BVc" id="oLj-1v-Dyk"/>
                         <outlet property="fullSizeButton" destination="bye-Se-cwW" id="KsK-ia-XXp"/>
                         <outlet property="muteButton" destination="zJF-E0-dTg" id="a3z-CK-3sm"/>
                         <outlet property="navigationBarVideo" destination="Iii-t2-iY2" id="tW9-Pu-iv7"/>
+                        <outlet property="nowTimeLabel" destination="s6M-IU-Zy2" id="6oz-3T-dya"/>
                         <outlet property="playButton" destination="oWu-0b-59q" id="7lz-uo-L0t"/>
                         <outlet property="seachButton" destination="ZVG-pS-ydL" id="vXZ-wA-Hrr"/>
                         <outlet property="textField" destination="7Zf-Ku-MfX" id="o8p-gI-crd"/>
+                        <outlet property="timeSlider" destination="qWP-iM-7zu" id="LDD-m4-Jlp"/>
                         <outlet property="videoSubView" destination="nJj-BV-hqr" id="zoZ-5o-Qbn"/>
                     </connections>
                 </viewController>

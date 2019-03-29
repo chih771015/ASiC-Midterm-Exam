@@ -18,9 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前尚無影片可播放" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upf-fz-Q4W">
+                                <rect key="frame" x="109.5" y="323" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJj-BV-hqr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入欲播放影片網址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-Ku-MfX">
                                 <rect key="frame" x="10" y="79" width="265" height="30"/>
@@ -141,11 +147,13 @@
                             <constraint firstItem="zJF-E0-dTg" firstAttribute="centerY" secondItem="DFh-Z3-G9n" secondAttribute="centerY" id="UK5-7n-CdK"/>
                             <constraint firstItem="ZVG-pS-ydL" firstAttribute="leading" secondItem="7Zf-Ku-MfX" secondAttribute="trailing" constant="10" id="WZ5-Be-ATm"/>
                             <constraint firstItem="ZVG-pS-ydL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="WcU-pT-4Au"/>
+                            <constraint firstItem="Upf-fz-Q4W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ac4-M3-iui"/>
                             <constraint firstItem="7Zf-Ku-MfX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="b36-V2-193"/>
                             <constraint firstItem="YKS-eu-87j" firstAttribute="leading" secondItem="qWP-iM-7zu" secondAttribute="trailing" constant="10" id="b7O-Nk-VPt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YKS-eu-87j" secondAttribute="trailing" constant="10" id="bQb-us-vyD"/>
                             <constraint firstItem="oWu-0b-59q" firstAttribute="leading" secondItem="DFh-Z3-G9n" secondAttribute="trailing" constant="40" id="bdt-8O-vKd"/>
                             <constraint firstItem="YKS-eu-87j" firstAttribute="centerY" secondItem="qWP-iM-7zu" secondAttribute="centerY" id="cb4-m0-Pp2"/>
+                            <constraint firstItem="Upf-fz-Q4W" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dJ0-pe-jEu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nJj-BV-hqr" secondAttribute="bottom" id="fcd-ri-RpT"/>
                             <constraint firstItem="nJj-BV-hqr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m6N-Wg-CAc"/>
                             <constraint firstItem="s6M-IU-Zy2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="qnX-Sx-bFC"/>
@@ -167,9 +175,12 @@
                         <outlet property="navigationBarVideo" destination="Iii-t2-iY2" id="tW9-Pu-iv7"/>
                         <outlet property="nowTimeLabel" destination="s6M-IU-Zy2" id="6oz-3T-dya"/>
                         <outlet property="playButton" destination="oWu-0b-59q" id="7lz-uo-L0t"/>
+                        <outlet property="playButtonAndSafeAreaConstraint" destination="Rjw-RF-UVM" id="g0b-fh-aNr"/>
                         <outlet property="seachButton" destination="ZVG-pS-ydL" id="vXZ-wA-Hrr"/>
+                        <outlet property="sliderAndPlayButtonConstraint" destination="w1D-kb-ye8" id="vHa-3S-Dde"/>
                         <outlet property="textField" destination="7Zf-Ku-MfX" id="o8p-gI-crd"/>
                         <outlet property="timeSlider" destination="qWP-iM-7zu" id="LDD-m4-Jlp"/>
+                        <outlet property="titleLabel" destination="Upf-fz-Q4W" id="bFF-te-Apv"/>
                         <outlet property="videoSubView" destination="nJj-BV-hqr" id="zoZ-5o-Qbn"/>
                     </connections>
                 </viewController>
@@ -197,10 +208,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fast_forward" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="full_screen_button" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="play_button" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="rewind" width="19.200000762939453" height="19.200000762939453"/>
-        <image name="volume_up" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="fast_forward" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="full_screen_button" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="play_button" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="rewind" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="volume_up" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
 </document>

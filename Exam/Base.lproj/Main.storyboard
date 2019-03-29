@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EN2-Sh-gfd">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,27 +15,35 @@
             <objects>
                 <viewController title="Video Player" id="BYZ-38-t0r" customClass="MediaExamViewController" customModule="Exam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前尚無影片可播放" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upf-fz-Q4W">
-                                <rect key="frame" x="109.5" y="323" width="156" height="21"/>
+                                <rect key="frame" x="129" y="357.66666666666669" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJj-BV-hqr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入欲播放影片網址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-Ku-MfX">
-                                <rect key="frame" x="10" y="79" width="265" height="30"/>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入欲播放影片網址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-Ku-MfX">
+                                <rect key="frame" x="10" y="79" width="304" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=compact-widthClass=regular" hidden="YES"/>
+                                <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-pS-ydL">
-                                <rect key="frame" x="285" y="79" width="80" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-pS-ydL">
+                                <rect key="frame" x="324" y="79" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="mUv-v0-hKy"/>
                                 </constraints>
@@ -53,86 +61,138 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=compact-widthClass=regular" hidden="YES"/>
+                                <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
                                 <connections>
                                     <action selector="seachAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0H-sb-JDv"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWP-iM-7zu">
-                                <rect key="frame" x="64" y="553" width="247" height="31"/>
+                                <rect key="frame" x="64" y="622" width="286" height="31"/>
                                 <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeTime:" destination="BYZ-38-t0r" eventType="valueChanged" id="XDq-18-NQy"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6M-IU-Zy2">
-                                <rect key="frame" x="10" y="557.5" width="46" height="21"/>
+                                <rect key="frame" x="10" y="626.66666666666663" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <nil key="textColor"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKS-eu-87j">
-                                <rect key="frame" x="319" y="557.5" width="46" height="21"/>
+                                <rect key="frame" x="358" y="626.66666666666663" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <nil key="textColor"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-0b-59q">
-                                <rect key="frame" x="175.5" y="613" width="24" height="24"/>
+                                <rect key="frame" x="195" y="682" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="FM7-H1-6s3"/>
                                     <constraint firstAttribute="width" constant="24" id="tHP-m6-QGw"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="play_button"/>
+                                <variation key="heightClass=compact">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </variation>
                                 <connections>
                                     <action selector="playAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="eQY-mC-tcP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C13-5B-BVc">
-                                <rect key="frame" x="239.5" y="613" width="24" height="24"/>
+                                <rect key="frame" x="259" y="682" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="o6q-Ap-Z04"/>
                                     <constraint firstAttribute="height" constant="24" id="tth-da-ajA"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="fast_forward"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </variation>
                                 <connections>
                                     <action selector="forwardAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueH-dM-V1S"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJF-E0-dTg">
-                                <rect key="frame" x="47.5" y="613" width="24" height="24"/>
+                                <rect key="frame" x="67" y="682" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="gjx-ut-dGQ"/>
                                     <constraint firstAttribute="width" constant="24" id="lMN-Rm-Yzh"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="volume_up"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </variation>
                                 <connections>
                                     <action selector="muteAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYK-2j-jW7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bye-Se-cwW">
-                                <rect key="frame" x="303.5" y="613" width="24" height="24"/>
+                                <rect key="frame" x="323" y="682" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="4Gn-AZ-cuw"/>
                                     <constraint firstAttribute="width" constant="24" id="e8h-rU-9P4"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="full_screen_button"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </variation>
                                 <connections>
                                     <action selector="fullSize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DYU-0K-vO3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFh-Z3-G9n">
-                                <rect key="frame" x="111.5" y="613" width="24" height="24"/>
+                                <rect key="frame" x="131" y="682" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Iwn-iR-pIr"/>
                                     <constraint firstAttribute="width" constant="24" id="R8F-aW-2cN"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="rewind"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </variation>
                                 <connections>
                                     <action selector="backAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rqm-Gu-3qd"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="oWu-0b-59q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1u0-f4-I8L"/>
                             <constraint firstItem="DFh-Z3-G9n" firstAttribute="leading" secondItem="zJF-E0-dTg" secondAttribute="trailing" constant="40" id="32Z-RD-HGP"/>
@@ -143,7 +203,10 @@
                             <constraint firstItem="qWP-iM-7zu" firstAttribute="leading" secondItem="s6M-IU-Zy2" secondAttribute="trailing" constant="10" id="EqZ-gZ-Tq5"/>
                             <constraint firstItem="bye-Se-cwW" firstAttribute="leading" secondItem="C13-5B-BVc" secondAttribute="trailing" constant="40" id="FL4-rF-lrN"/>
                             <constraint firstItem="C13-5B-BVc" firstAttribute="leading" secondItem="oWu-0b-59q" secondAttribute="trailing" constant="40" id="HD8-Sp-Ny0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oWu-0b-59q" secondAttribute="bottom" constant="30" id="Rjw-RF-UVM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oWu-0b-59q" secondAttribute="bottom" constant="10" id="Rjw-RF-UVM">
+                                <variation key="heightClass=compact-widthClass=regular" constant="10"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            </constraint>
                             <constraint firstItem="zJF-E0-dTg" firstAttribute="centerY" secondItem="DFh-Z3-G9n" secondAttribute="centerY" id="UK5-7n-CdK"/>
                             <constraint firstItem="ZVG-pS-ydL" firstAttribute="leading" secondItem="7Zf-Ku-MfX" secondAttribute="trailing" constant="10" id="WZ5-Be-ATm"/>
                             <constraint firstItem="ZVG-pS-ydL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="WcU-pT-4Au"/>
@@ -158,12 +221,21 @@
                             <constraint firstItem="nJj-BV-hqr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m6N-Wg-CAc"/>
                             <constraint firstItem="s6M-IU-Zy2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="qnX-Sx-bFC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZVG-pS-ydL" secondAttribute="trailing" constant="10" id="ruG-OK-cXD"/>
-                            <constraint firstItem="oWu-0b-59q" firstAttribute="top" secondItem="qWP-iM-7zu" secondAttribute="bottom" constant="30" id="w1D-kb-ye8"/>
+                            <constraint firstItem="oWu-0b-59q" firstAttribute="top" secondItem="qWP-iM-7zu" secondAttribute="bottom" constant="10" id="w1D-kb-ye8">
+                                <variation key="heightClass=compact-widthClass=regular" constant="10"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            </constraint>
                             <constraint firstItem="C13-5B-BVc" firstAttribute="centerY" secondItem="oWu-0b-59q" secondAttribute="centerY" id="x7W-xC-Lb9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nJj-BV-hqr" secondAttribute="trailing" id="yNS-W8-jNI"/>
                             <constraint firstItem="DFh-Z3-G9n" firstAttribute="centerY" secondItem="oWu-0b-59q" secondAttribute="centerY" id="ymU-ud-XpB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Video Player" id="Iii-t2-iY2"/>
                     <connections>
@@ -194,7 +266,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EN2-Sh-gfd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k6A-xW-HsG">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

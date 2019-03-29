@@ -26,8 +26,8 @@ class MediaExamViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var seachButton: UIButton!
     @IBAction func seachAction() {
+        
         timeSlider.value = 0
-        endTimeLabel.text = "00:00"
         nowTimeLabel.text = "00:00"
         self.muteButton.setImage(UIImage(named: ButtonImage.muteNo.rawValue), for: .normal)
         self.playerLayer?.removeFromSuperlayer()
@@ -37,8 +37,6 @@ class MediaExamViewController: UIViewController {
         playButton.setImage(UIImage(named:String(ButtonImage.play.rawValue)), for: .normal)
         guard let title = textField.text else {return}
         guard let url = URL(string: title) else {return}
-        
-    
         let playerItem = AVPlayerItem(url: url)
         let player = AVPlayer(playerItem: playerItem)
         self.player = player
@@ -46,7 +44,7 @@ class MediaExamViewController: UIViewController {
         playerLayer.frame = view.bounds
         self.playerLayer = playerLayer
         videoSubView.layer.addSublayer(playerLayer)
-
+        
         let duration = playerItem.asset.duration
         let seconds = CMTimeGetSeconds(duration)
         endTimeLabel.text = formatConversion(time: seconds)
@@ -54,6 +52,7 @@ class MediaExamViewController: UIViewController {
         timeSlider.maximumValue = Float(seconds)
         timeSlider.isContinuous = true
         player.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: DispatchQueue.main, using: { [weak self] (CMTime) in
+            
             if self?.player?.currentItem?.status == .readyToPlay {
                 let currentTime = CMTimeGetSeconds(self!.player!.currentTime())
                 self?.timeSlider.value = Float(currentTime)
@@ -104,29 +103,12 @@ class MediaExamViewController: UIViewController {
             return
         }
         let currentTime = CMTimeGetSeconds(player.currentTime())
-       // let seconds = Int64(timeSlider.value)
-        
-        print("currentTime")
-
-        print(currentTime)
         let addTime = currentTime - Float64(10)
-        print("addTime")
-        print(addTime)
-        
         let intTime = CMTime(seconds: addTime, preferredTimescale: 1)
-        print("intTime")
-        print(intTime)
-        let targetTime:CMTime = CMTimeMake(value: Int64(addTime), timescale: 1)
-        // 將當前設置時間設為播放時間
-       // player.currentItem?.timebase
-        print("player.currentItem?.timebase")
-        print(player.currentItem?.timebase)
         player.seek(to: intTime)
     }
     
     @IBOutlet weak var backButton: UIButton!
-    
-    
     @IBOutlet weak var fullSizeButton: UIButton!
     @IBAction func fullSize(_ sender: Any) {
         
@@ -146,19 +128,19 @@ class MediaExamViewController: UIViewController {
             return
         }
         
-        
         if player.isMuted {
+            
             muteButton.setImage(UIImage(named: ButtonImage.muteNo.rawValue), for: .normal)
             player.isMuted = !player.isMuted
            
         } else {
+
             muteButton.setImage(UIImage(named: ButtonImage.mute.rawValue), for: .normal)
             player.isMuted = !player.isMuted
         }
-        
     }
-    @IBOutlet weak var videoSubView: UIView!
     
+    @IBOutlet weak var videoSubView: UIView!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var sliderAndPlayButtonConstraint: NSLayoutConstraint!
     
@@ -166,19 +148,11 @@ class MediaExamViewController: UIViewController {
         
         let seconds = Int64(timeSlider.value)
         let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
-        // 將當前設置時間設為播放時間
         player?.seek(to: targetTime)
     }
     
-    
-    
     @IBOutlet weak var nowTimeLabel: UILabel!
-    
     @IBOutlet weak var endTimeLabel: UILabel!
-    
-    
-    
-    
     @IBOutlet weak var navigationBarVideo: UINavigationItem!
     
     var player: AVPlayer?
@@ -188,14 +162,15 @@ class MediaExamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        //self.navigationController?.navigationBar.tintColor = .white
+ 
         // Do any additional setup after loading the view, typically from a nib.
         timeSlider.value = 0
         deviceStatusSetting()
+        
+        AVAudioSession.sharedInstance().outputVolume
                
     }
     
@@ -204,68 +179,35 @@ class MediaExamViewController: UIViewController {
         
         coordinator.animate(alongsideTransition: { [unowned self]_ in
             
-            print(UIDevice.current.orientation.isPortrait)
-            
-            
             self.playerLayer?.frame = self.view.bounds
             self.deviceStatusSetting()
-    
         }, completion: { [unowned self]_ in
-            
-//            self.playerLayer?.frame = self.view.bounds
-//            self.navigationController?.isNavigationBarHidden = !((self.navigationController?.navigationBar.isHidden)!)
             
         })
         
         
     }
     
-    func deviceStatusSetting() {
+    private func deviceStatusSetting() {
         
         if UIDevice.current.orientation.isLandscape {
             
             self.navigationController?.isNavigationBarHidden = true
-            self.textField.isHidden = true
-            self.seachButton.isHidden = true
-            self.playButtonAndSafeAreaConstraint.constant = 10
-            self.sliderAndPlayButtonConstraint.constant = 10
-            self.endTimeLabel.textColor = .white
-            self.nowTimeLabel.textColor = .white
-            self.view.backgroundColor = .black
-            self.playButton.tintColor = .white
-            self.backButton.tintColor = .white
-            self.muteButton.tintColor = .white
-            self.forwardButton.tintColor = .white
-            self.fullSizeButton.tintColor = .white
             self.fullSizeButton.setImage(UIImage(named: ButtonImage.noFull.rawValue), for: .normal)
-            self.titleLabel.textColor = .white
         
         } else {
             
             self.navigationController?.isNavigationBarHidden = false
-            self.textField.isHidden = false
-            self.seachButton.isHidden = false
-            self.playButtonAndSafeAreaConstraint.constant = 30
-            self.sliderAndPlayButtonConstraint.constant = 30
-            self.endTimeLabel.textColor = .black
-            self.nowTimeLabel.textColor = .black
-            self.view.backgroundColor = .white
-            self.playButton.tintColor = .black
-            self.backButton.tintColor = .black
-            self.muteButton.tintColor = .black
-            self.forwardButton.tintColor = .black
-            self.fullSizeButton.tintColor = .black
             self.fullSizeButton.setImage(UIImage(named: ButtonImage.full.rawValue), for: .normal)
-            self.titleLabel.textColor = UIColor.lightGray
         }
     }
     
     
-    func formatConversion(time:Float64) -> String {
+    private func formatConversion(time:Float64) -> String {
         
         let songLength = Int(time)
-        let minutes = Int(songLength / 60) // 求 songLength 的商，為分鐘數
-        let seconds = Int(songLength % 60) // 求 songLength 的餘數，為秒數
+        let minutes = Int(songLength / 60)
+        let seconds = Int(songLength % 60)
         var time = ""
         if minutes < 10 {
             time = "0\(minutes):"
